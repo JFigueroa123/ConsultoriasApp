@@ -1,0 +1,110 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content class="mat-typography">
+
+  <form [formGroup]="formCliente" class="box-card">
+      <div class="row">
+         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                                    
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Nombres</mat-label>
+                <input matInput placeholder="Placeholder" type="text" formControlName="nombres">
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                                    
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Apellidos</mat-label>
+                <input matInput placeholder="Placeholder" type="text" formControlName="apellidos">
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                                    
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Télefono</mat-label>
+                <input matInput placeholder="Placeholder" type="text" formControlName="telefono">
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                                    
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Placeholder" type="text" formControlName="email">
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                                    
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Número documento</mat-label>
+                <input matInput placeholder="Placeholder" type="text" formControlName="numeroDoc">
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                                    
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Dirección</mat-label>
+                <input matInput placeholder="Placeholder" type="text" formControlName="direccion">
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                                    
+              <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Activo</mat-label>
+              <mat-select formControlName="activo">
+                  <mat-option [value]="true">SI</mat-option>
+                  <mat-option [value]="false">NO</mat-option>
+              </mat-select>
+              </mat-form-field>
+          </div>        
+      </div>
+  </form><br>
+
+
+  <form [formGroup]="formVisitaCliente" class="box-card">
+      <div class="row">   
+         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">                                    
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Observaciones</mat-label>
+                <input matInput placeholder="Placeholder" type="text" formControlName="observaciones">
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Fecha de llegada</mat-label>
+              <input matInput [matDatepicker]="fechLLegada"  formControlName="fechaHoraLlegada">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="fechLLegada"></mat-datepicker-toggle>
+              <mat-datepicker #fechLLegada disabled="false"></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Fecha de salida</mat-label>
+              <input matInput [matDatepicker]="fechSalida" formControlName="fechaHoraSalida">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="fechSalida"></mat-datepicker-toggle>
+              <mat-datepicker #fechSalida disabled="false"></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">    
+              <div class="status"><h5>STATUS</h5></div><br>                          
+             <mat-button-toggle-group name="fontStyle" aria-label="Font Style" formControlName="idEstado">
+                    <mat-button-toggle [value]="item.id" *ngFor="let item of listaEstados" [ngClass]="{
+                      'estado-pendiente': item.nombre === 'pendiente',
+                      'estado-proceso': item.nombre === 'proceso',
+                      'estado-completado': item.nombre === 'completado'}">{{item.nombre}}
+                    </mat-button-toggle>
+             </mat-button-toggle-group>
+          </div>         
+
+      </div>
+  </form>
+  
+
+  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+   <button mat-button cdkFocusInitial (click)="actualizarRegistro()" *ngIf="!isNuevo()">Actualizar</button>
+</mat-dialog-actions>

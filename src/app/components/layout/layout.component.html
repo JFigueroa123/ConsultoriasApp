@@ -1,0 +1,43 @@
+<app-header (toggleSidenav)="drawer.toggle()"></app-header>
+
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" mode="side">
+       <div class="drawer-head">
+            <img src="logo.png" alt="">
+             <mat-divider></mat-divider>
+       </div>
+
+       <div class="acordeon">
+            <mat-accordion *ngFor="let item of OpcionesMenu | async">
+                <mat-expansion-panel style="margin: 2px;">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <mat-icon>{{item.icono}}</mat-icon> 
+                            {{item.nombre}}
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    
+                    <!-- Contenido del submenú -->
+                    <div class="submenu-container">                        
+                        <!-- Si el item tiene submenú (hijos) -->
+                        <div *ngIf="item.opcionesMenuN2 && item.opcionesMenuN2.length > 0" class="submenu-items">
+                            <div *ngFor="let subitem of item.opcionesMenuN2" class="submenu-item">
+                                <a [routerLink]="subitem.url" 
+                                routerLinkActive="submenu-active" 
+                                class="submenu-link"  routerLinkActive="selected" [routerLinkActiveOptions]="{ exact: true }">
+                                    {{subitem.nombre}}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+       </div>
+    </mat-drawer>
+  
+    <div class="example-sidenav-content ">
+        <router-outlet></router-outlet>
+    </div>  
+</mat-drawer-container>
+<app-footer></app-footer>
+  

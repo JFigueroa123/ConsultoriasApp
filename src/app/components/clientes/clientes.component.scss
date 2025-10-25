@@ -1,0 +1,28 @@
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 20%;
+  margin: 10px;
+}
+
+td, th {
+  width: 25%;
+}
+
+.add{
+  text-align: right;
+  font-size: 12px;
+  margin: 10px;
+}
+
+
+.select-row{
+}
+
+.select-row:hover{
+  background-color: #12515c21;
+  transition: background-color ease-in 0.05s;
+}

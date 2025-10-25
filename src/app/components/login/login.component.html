@@ -1,0 +1,45 @@
+<div class="contenedor">
+    <div class="login-container card">
+
+        <mat-label class="text-center">Inicio de sesión</mat-label>
+        <img src="logo.png" alt="">
+        <form [formGroup]="form">
+            <div class="row">
+                <div class="lg-12">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Usuario</mat-label>
+                        <input matInput type="text" placeholder="Nombre de usuario" formControlName="userName">
+                        <mat-icon matSuffix>person</mat-icon>
+                    </mat-form-field>
+                </div>
+
+                <div class="lg-12">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput [type]="hidePass ? 'password' : 'text'" placeholder="Contraseña" formControlName="password">
+                        <button
+                            mat-icon-button
+                            matSuffix
+                            type="button"
+                            (click)="hidePass = !hidePass"
+                            [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hidePass"
+                        >
+                            <mat-icon>{{
+                            hidePass ? "visibility_off" : "visibility"
+                            }}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+            </div>              
+        </form>
+       
+
+        <button mat-flat-button (click)="login()" [disabled]="!form.valid">Ingresar</button>
+        <div class="spinner" *ngIf="showSpinner">
+           <div class="loader"></div>
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,13 @@
+<div class="slide-in-bottom">
+
+  <div class="box">
+    <app-filtros (clickConsultarDatos)="cargarPaginaFiltros()"></app-filtros>
+  </div>
+</div>
+
+
+<div echarts [options]="option" class="chart-container" *ngIf="cargandoGrafica"></div>
+
+<div echarts [options]="option2" class="chart-container" *ngIf="cargandoGrafica"></div>
+
+

@@ -1,0 +1,24 @@
+.status{
+    background-color: #3b5a2e;
+    width: 100%;
+    border-radius: 10PX;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+.estado-pendiente{
+    background-color:  rgb(166, 9, 9);
+    color: white;
+}
+
+.estado-proceso{
+    background-color: rgb(255, 170, 13);
+     color: white;
+}
+
+.estado-completado{
+    background-color: rgb(7, 137, 14);
+     color: white;
+}

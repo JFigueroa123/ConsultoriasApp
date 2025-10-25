@@ -1,0 +1,136 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+.card{
+   box-shadow: 0px 0px 50px 12px rgba(0,0,0,0.1);
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.rotate-in-center:hover {
+  animation: rotate-in-center 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.box{
+  border: 1px solid #12515c;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+@keyframes rotate-in-center {
+  0% {
+    transform: rotate(-360deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(0);
+    opacity: 1;
+  }
+}
+
+
+//Animacion de entrada para el cuerpo de un componente
+//---------- ---------- ---------- ---------- ---------- ---------- ----------
+.slide-in-bottom {
+	animation: slide-in-bottom 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-in-bottom {
+  0% {
+    transform: translateY(1000px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+//---------- ---------- ---------- ---------- ---------- ---------- ----------
+
+
+//Animacion de entrada para el cuerpo de la barra de informacion
+//---------- ---------- ---------- ---------- ---------- ---------- ----------
+.slide-in-left {
+	animation: slide-in-left 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-1000px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 60px;
+  height: 60px;
+  display: grid;
+  margin: auto;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  grid-area: 1/1; 
+  background: #e64312;
+  clip-path: polygon(0 0,100% 0,100% 100%,75% 25%,0 0,0 100%,100% 100%,25% 75%,0 0);
+  animation: l20 1.5s infinite linear;
+}
+.loader:after {
+  clip-path: polygon(0 0,76% 24%,100% 100%,24% 76%);
+  --s:0;
+}
+@keyframes l20 {
+  0%      {transform: perspective(100px) rotate3d(1,var(--s,1),0,0)      } 
+  25%     {transform: perspective(100px) rotate3d(1,var(--s,1),0,-90deg) }
+  25.01%  {transform: perspective(100px) rotate3d(1,var(--s,1),0,-90deg) } 
+  40%,60% {transform: perspective(100px) rotate3d(1,var(--s,1),0,-180deg)} 
+  75%     {transform: perspective(100px) rotate3d(1,var(--s,1),0,-270deg)}
+  75.01%  {transform: perspective(100px) rotate3d(1,var(--s,1),0,-270deg)} 
+  90%,100%{transform: perspective(100px) rotate3d(1,var(--s,1),0,-360deg)}
+}
+
+
+.box-card{
+  border: 1px solid #12515c;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
+.mt-10{
+  margin-top: 10px;
+}
+
+.estado-pendiente{
+    color:  rgb(166, 9, 9);
+}
+
+.estado-proceso{
+    color: rgb(255, 170, 13);;
+
+}
+
+.estado-completado{
+    color: rgb(7, 137, 14);
+}
+
+
+
+
+

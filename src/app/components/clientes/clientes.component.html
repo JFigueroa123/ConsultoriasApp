@@ -1,0 +1,92 @@
+
+<div class="slide-in-bottom">
+
+  <div class="box">
+    <app-filtros (clickConsultarDatos)="cargarPaginaFiltros()"></app-filtros>
+  </div>
+
+  <div class="add">
+    <button mat-stroked-button (click)="addCliente()">Agregar registro <mat-icon>add</mat-icon></button>
+  </div>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Buscar</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input>
+  </mat-form-field>
+
+
+  <div class="mat-elevation-z6">
+    <table mat-table [dataSource]="dataSource">
+
+      
+      <ng-container matColumnDef="menu">
+        <th mat-header-cell *matHeaderCellDef> <mat-icon>settings</mat-icon> </th>
+        <td mat-cell *matCellDef="let element"> 
+           <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"  matTooltip="Clik para opciones">
+            <mat-icon>more_vert</mat-icon>
+           </button>
+
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item  (click)="updateCliente(element)">
+              <mat-icon>search</mat-icon>
+              <span>Consultar</span>
+            </button>
+            <button mat-menu-item disabled>
+              <mat-icon>delete</mat-icon>
+              <span>Eliminar</span>
+            </button>
+          </mat-menu>
+
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombres">
+        <th mat-header-cell *matHeaderCellDef> Nombres </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombres}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="apellidos">
+        <th mat-header-cell *matHeaderCellDef>Apellidos</th>
+        <td mat-cell *matCellDef="let element"> {{element.apellidos}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="telefono">
+        <th mat-header-cell *matHeaderCellDef> Télefono </th>
+        <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="numeroDoc">
+        <th mat-header-cell *matHeaderCellDef> Documento No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.numeroDoc}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef> Fecha </th>
+        <td mat-cell *matCellDef="let element"> {{element.fechaCreacion}} </td>
+      </ng-container>
+
+      
+      <ng-container matColumnDef="activo">
+        <th mat-header-cell *matHeaderCellDef> Activo </th>
+        <td mat-cell *matCellDef="let element"><mat-icon>{{element.activo==true? 'check': 'close'}}</mat-icon></td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="select-row"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                  showFirstLastButtons
+                  aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+
+
+</div>
+

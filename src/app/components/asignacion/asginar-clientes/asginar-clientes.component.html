@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Asignación de clientes</h2>
+<mat-dialog-content class="mat-typography">
+
+
+  <div>
+    <mat-button-toggle-group 
+    name="tecnico" 
+    [(ngModel)]="tecnicoSeleccionado" 
+    aria-label="Seleccionar técnico">
+  
+    <mat-button-toggle 
+      *ngFor="let item of listadoTecnicos" 
+      [value]="item.id">
+      {{item.userName}}
+    </mat-button-toggle>
+    </mat-button-toggle-group>
+
+    <div class="date">
+      <mat-form-field>
+        <mat-label>Seleccione fecha</mat-label>
+        <input matInput [matDatepicker]="dp3" disabled  [(ngModel)]="fechaSeleccionada">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="dp3"></mat-datepicker-toggle>
+        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+  </div>  
+
+  <mat-list role="list" *ngFor="let item of listadoClientes">
+    <mat-list-item role="listitem" (click)="guardarAsignacion(item)" matTooltip="Click para asignar cliente" class="list-item">{{item.nombres}} {{item.apellidos}}</mat-list-item>
+    <mat-divider></mat-divider>
+  </mat-list>
+
+
+  
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+</mat-dialog-actions>
